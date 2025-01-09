@@ -105,7 +105,7 @@ chmod +x check.sh
 ### Dependencies
 Ensure the following are installed:
 - Linux/Unix Shell
-- Golang: For asnmap, mapcidr, and dnsx
+- Golang: For asnmap, mapcidr, naabu and dnsx
 ```bash
 sudo apt install -y golang
 ```
