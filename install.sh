@@ -43,4 +43,11 @@ echo "Installing whois..."
 sudo apt update && sudo apt install -y whois
 check_status "whois"
 
+# Install naabu
+echo "Installing naabu..."
+go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+check_status "naabu"
+sudo mv ~/go/bin/naabu /usr/local/bin
+check_status "naabu moved to /usr/local/bin"
+
 echo -e "\n$g[✔] All Tools Installed Successfully! $e\n"
