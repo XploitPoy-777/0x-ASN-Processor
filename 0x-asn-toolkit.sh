@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for extracting CIDR ranges, resolving IPs, and performing reverse DNS lookups for a given ASN.
-# Usage: ./script.sh <ASN>
+# Usage: ./0x-asn-toolkit.sh <ASN>
 
 # Check if an ASN argument is provided
 if [ -z "$1" ]; then
