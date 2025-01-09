@@ -30,6 +30,27 @@ cd 0x-asn-toolkit
 ```
 ### Step 2: Install Required Tools
 The script will check and install missing tools automatically. Below are the manual installation commands for each tool:
+
+Tools Install:
+```bash
+# Make it executable:
+chmod +x install.sh
+
+# Run the script:
+./install.sh
+```
+
+Tools Install Check: 
+
+```bash
+# Make it executable:
+chmod +x check.sh
+
+# Run the script:
+./check.sh
+```
+
+### Manually Install
 - whois:
 ```bash
   sudo apt update && sudo apt install -y whois
@@ -80,3 +101,5 @@ Ensure the following are installed:
 ```bash
 sudo apt install -y golang
 ```
+## Contribution
+- Contributions are welcome! Please feel free to open issues or submit pull requests for improvements.
