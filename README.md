@@ -86,7 +86,7 @@ chmod +x check.sh
 4. Logs: A detailed log file (asn_processing_<timestamp>.log) is created for each run.
 ### Example
 ```bash
-./asn_processor.sh AS12345
+./0x-asn-toolkit.sh AS12345
 ```
 ### Output:
 
