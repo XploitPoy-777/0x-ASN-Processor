@@ -111,3 +111,6 @@ sudo apt install -y golang
 ```
 ## Contribution
 - Contributions are welcome! Please feel free to open issues or submit pull requests for improvements.
+
+### ⚠️ Reminder
+🛡️ Always use this script ethically and responsibly. Ensure you have proper authorization before scanning or querying any resources. This tool is designed to enhance security research, not violate policies or laws.
