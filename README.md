@@ -6,6 +6,7 @@ This script automates the process of extracting CIDR ranges, resolving IPs, and 
 - Extract CIDR ranges using `whois` and `asnmap`.
 - Expand CIDR ranges into individual IP addresses using `mapcidr`.
 - Perform reverse DNS lookups to resolve associated domains using `dnsx`.
+- Checks for open ports on All IPs  using `naabu`.
 - Automatically install missing tools.
 - Archive results for easier storage and sharing.
 - Comprehensive logging for tracking progress.
@@ -18,6 +19,7 @@ The script uses the following tools:
 2. **asnmap**: For extracting CIDR ranges associated with an ASN.
 3. **mapcidr**: For expanding CIDRs into individual IPs.
 4. **dnsx**: For reverse DNS lookups and domain resolution.
+5. **naabu**: Checks for open ports on IPs from all_ip.txt.
 
 ---
 
@@ -67,6 +69,11 @@ chmod +x check.sh
 ```bash
   go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 ```
+- naabu:
+```bash
+  go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+```
+
 ### Usage Instructions
 1. Make the script executable:
 ```bash
@@ -93,6 +100,7 @@ chmod +x check.sh
 - CIDR.txt
 - all_ip.txt
 - ASN_domain.txt
+- port-open-list.txt
 - Results archived to asn_results_AS12345_<timestamp>.tar.gz.
 ### Dependencies
 Ensure the following are installed:
