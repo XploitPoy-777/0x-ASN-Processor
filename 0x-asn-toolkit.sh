@@ -57,19 +57,24 @@ cat Domain1.txt Domain2.txt | sort | uniq | tee ASN_domain.txt > /dev/null
 # Cleanup temporary domain files
 rm Domain1.txt Domain2.txt
 
+# Step 8: Check for open ports
+echo -e "\033[1;34mChecking open ports on IPs...\033[0m" | tee -a "$LOGFILE"
+naabu -list all_ip.txt -p 80,443 -v -o port-open-list.txt
+
 # Step 8: Summary of results
 echo -e "\033[1;34mProcessing complete.\033[0m" | tee -a "$LOGFILE"
 echo -e "\033[1;34mCIDR Ranges: $(wc -l < CIDR.txt)\033[0m" | tee -a "$LOGFILE"
 echo -e "\033[1;34mTotal IPs: $(wc -l < all_ip.txt)\033[0m" | tee -a "$LOGFILE"
 echo -e "\033[1;34mResolved Domains: $(wc -l < ASN_domain.txt)\033[0m" | tee -a "$LOGFILE"
+echo -e "\033[1;34mOpen Ports: $(wc -l < port-open-list.txt)\033[0m" | tee -a "$LOGFILE"
 
 # Optional: Archive results
 RESULT_ARCHIVE="asn_results_$ASN_$(date +%Y%m%d_%H%M%S).tar.gz"
-tar -czf "$RESULT_ARCHIVE" CIDR.txt all_ip.txt ASN_domain.txt
+tar -czf "$RESULT_ARCHIVE" CIDR.txt all_ip.txt ASN_domain.txt port-open-list.txt
 echo -e "\033[1;34mResults archived to $RESULT_ARCHIVE\033[0m" | tee -a "$LOGFILE"
 
 # Cleanup CIDR and domain result files if not needed
 # Uncomment the line below to remove raw files after archiving
-# rm CIDR.txt all_ip.txt ASN_domain.txt
+# rm CIDR.txt all_ip.txt ASN_domain.txt port-open-list.txt
 
 echo -e "\033[1;34mLog file saved to $LOGFILE"
