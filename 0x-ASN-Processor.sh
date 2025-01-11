@@ -67,25 +67,25 @@ mkdir -p "$OUTPUT_DIR"
 # Define log file in the output directory
 LOGFILE="$OUTPUT_DIR/asn_processing.log"
 
-# Update or clone 0x-asn-toolkit
-TOOLKIT_DIR="0x-asn-toolkit"
+# Update or clone 0x-ASN-Processor
+TOOLKIT_DIR="0x-ASN-Processor"
 
 if [ -d "$TOOLKIT_DIR" ]; then
     echo -e "${YELLOW}[+] Directory '$TOOLKIT_DIR' found. Attempting to update the repository...${NC}" | tee -a "$LOGFILE"
     cd "$TOOLKIT_DIR" || { echo -e "${RED}Failed to navigate to '$TOOLKIT_DIR'. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
     if git pull origin main; then
-        echo -e "${GREEN}[+] Successfully updated 0x-asn-toolkit repository.${NC}" | tee -a "$LOGFILE"
+        echo -e "${GREEN}[+] Successfully updated 0x-ASN-Processor repository.${NC}" | tee -a "$LOGFILE"
     else
-        echo -e "${RED}[-] Failed to update 0x-asn-toolkit repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
+        echo -e "${RED}[-] Failed to update 0x-ASN-Processor repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
         exit 1
     fi
     cd .. || { echo -e "${RED}Failed to navigate back to the parent directory. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
 else
     echo -e "${YELLOW}[+] Directory '$TOOLKIT_DIR' not found. Cloning the repository...${NC}" | tee -a "$LOGFILE"
-    if git clone https://github.com/0xPoyel/0x-asn-toolkit.git; then
-        echo -e "${GREEN}[+] Successfully cloned 0x-asn-toolkit repository.${NC}" | tee -a "$LOGFILE"
+    if git clone https://github.com/0xPoyel/0x-ASN-Processor.git; then
+        echo -e "${GREEN}[+] Successfully cloned 0x-ASN-Processor repository.${NC}" | tee -a "$LOGFILE"
     else
-        echo -e "${RED}[-] Failed to clone 0x-asn-toolkit repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
+        echo -e "${RED}[-] Failed to clone 0x-ASN-Processor repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
         exit 1
     fi
 fi
