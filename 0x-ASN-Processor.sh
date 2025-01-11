@@ -18,7 +18,7 @@ display_logo() {
     echo -e "${CYAN}      ██║     ╚██████╔╝███████╗       "
     echo -e "${CYAN}      ╚═╝      ╚═════╝ ╚══════╝       "
     echo -e "${BLUE}=======================================${NC}"
-    echo -e "${YELLOW}   「🐦‍🔥」0xPoyel ASN Processor     "
+    echo -e "${YELLOW}    0xPoyel ASN Processor     "
     echo -e "${BLUE}=======================================${NC}"
 }
 
