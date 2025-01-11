@@ -67,7 +67,13 @@ chmod +x check.sh
 ```bash
   chmod +x 0x-asn-toolkit.sh
 ```
-2. Run the script:
+
+2. Open Help file:
+```bash
+  ./0x-asn-toolkit.sh -h
+```
+
+3. Run the script:
 ```bash
   ./0x-asn-toolkit.sh <ASN>
 ```
