@@ -12,3 +12,4 @@ hash mapcidr 2>/dev/null && printf "[mapcidr] $g Installed $e\n" || printf "[map
 hash dnsx 2>/dev/null && printf "[dnsx] $g Installed $e\n" || printf "[dnsx] $r Install Manually $e\n"
 hash naabu 2>/dev/null && printf "[naabu] $g Installed $e\n" || printf "[naabu] $r Install Manually $e\n"
 hash nmap 2>/dev/null && printf "[nmap] $g Installed $e\n" || printf "[nmap] $r Install Manually $e\n"
+hash awk 2>/dev/null && printf "[awk] $g Installed $e\n" || printf "[awk] $r Install Manually $e\n"
