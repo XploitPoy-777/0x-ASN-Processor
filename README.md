@@ -88,8 +88,11 @@ The script automatically performs the following steps:
 4. Performs detailed service detection.
 
 ## **YouTube Tutorial**
-Watch our comprehensive walkthrough of the ASN Processing Tool on YouTube:  
+Watch our comprehensive walkthrough of the ASN Processing Tool on YouTube: 
 
+[![Watch the Tutorial on YouTube](https://img.youtube.com/vi/HNRZZiQD3Oo/0.jpg)](https://www.youtube.com/watch?v=HNRZZiQD3Oo)
+
+---
 
 ### Output Files:
 - **CIDR.txt**: Combined list of CIDR ranges.
