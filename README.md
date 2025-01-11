@@ -69,7 +69,7 @@ chmod +x check.sh
 ```
 2. Run the script:
 ```bash
-  ./asn_processor.sh <ASN>
+  ./0x-asn-toolkit.sh <ASN>
 ```
 - Replace <ASN> with the target ASN, e.g., AS12345.
 
