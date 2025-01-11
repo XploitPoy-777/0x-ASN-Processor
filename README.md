@@ -1,29 +1,32 @@
-# Description
-🚀 Unveiling the All-in-One ASN Reconnaissance Script for Cybersecurity Professionals! 🔎
+# ASN Processing Tool
+## Description
 
-Whether you're a **bug bounty hunter**, **penetration tester**, or **network security analyst**, this tool is your ultimate companion for deep-dive ASN analysis and reconnaissance. Automate your workflow, save time, and uncover actionable insights with ease!
-## ASN Processing Tool
+The ASN Processing Tool is a comprehensive script designed for network reconnaissance and service scanning. It allows security researchers and network administrators to fetch CIDR ranges, resolve IPs, perform reverse DNS lookups, and scan for open services for a given ASN (Autonomous System Number).
 
-This script automates the process of extracting CIDR ranges, resolving IPs, and performing reverse DNS lookups for a given ASN. It also includes automated installation of required tools.
+Whether you're a **bug bounty hunter**, **penetration tester**, or **network security analyst**, this tool streamlines the process of understanding network infrastructure, identifying active IPs, and uncovering potential vulnerabilities. It is an essential resource for conducting reconnaissance, expanding attack surfaces, and performing security assessments.
 
 ## Features
-- Extract CIDR ranges using `whois` and `asnmap`.
-- Expand CIDR ranges into individual IP addresses using `mapcidr`.
-- Perform reverse DNS lookups to resolve associated domains using `dnsx`.
-- Checks for open ports on All IPs  using `naabu`.
-- Automatically install missing tools.
-- Archive results for easier storage and sharing.
-- Comprehensive logging for tracking progress.
+- Fetch CIDR ranges associated with an ASN using multiple sources (`whois` and `asnmap`).
+- Expand CIDR ranges into individual IPs for detailed analysis `mapcidr`.
+- Perform reverse DNS lookups to identify associated domains `dnsx`.
+- Identify live IPs with fast port scanning using `naabu`.
+- Conduct detailed service scans with `nmap`for open ports and service version detection.
+- Automatically combine and deduplicate results.
+- Generate detailed log files for tracking progress and results.
 
 ---
 
 ## Tools Required
-The script uses the following tools:
-1. **whois**: For querying CIDR ranges from RADB.
-2. **asnmap**: For extracting CIDR ranges associated with an ASN.
-3. **mapcidr**: For expanding CIDRs into individual IPs.
-4. **dnsx**: For reverse DNS lookups and domain resolution.
-5. **naabu**: Checks for open ports on IPs from all_ip.txt.
+The following tools are required to run this script:
+1. `whois`
+2. `asnmap`
+3. `mapcidr`
+4. `dnsx`
+5. `naabu`
+6. `nmap`
+7. `awk`
+
+Ensure all tools are installed and properly configured on your system.
 
 ---
 
@@ -56,28 +59,6 @@ chmod +x check.sh
 ./check.sh
 ```
 
-### Manually Install
-- whois:
-```bash
-  sudo apt update && sudo apt install -y whois
-```
-- asnmap:
-```bash
-  go install github.com/projectdiscovery/asnmap/cmd/asnmap@latest
-```
-- mapcidr:
-```bash
-  go install github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
-```
-- dnsx:
-```bash
-  go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-```
-- naabu:
-```bash
-  go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-```
-
 ### Usage Instructions
 1. Make the script executable:
 ```bash
@@ -89,23 +70,61 @@ chmod +x check.sh
 ```
 - Replace <ASN> with the target ASN, e.g., AS12345.
 
-3. Output Files:
-- CIDR.txt: Combined list of CIDR ranges.
-- all_ip.txt: All IP addresses from the CIDR ranges.
-- ASN_domain.txt: Resolved domains from reverse DNS lookups.
-- Archived Results: Results are saved as asn_results_<ASN>_<timestamp>.tar.gz
-4. Logs: A detailed log file (asn_processing_<timestamp>.log) is created for each run.
+The script automatically performs the following steps:
+
+1. Fetches CIDR ranges.
+2. Resolves individual IPs and domains.
+3. Scans for live IPs and open ports.
+4. Performs detailed service detection.
+
+## **YouTube Tutorial**
+Watch our comprehensive walkthrough of the ASN Processing Tool on YouTube:  
+
+[![Watch the video](https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500)](https://www.youtube.com/watch?v=2K2gTCHt6kg)
+
+
+### Output Files:
+- **CIDR.txt**: Combined list of CIDR ranges.
+- **All_ip.txt**: List of all expanded IPs.
+- **ASN_domain.txt**: Resolved domains from reverse DNS.
+- **Alive_ips.txt**: List of live IPs with open ports.
+- **nmap-scan-result.txt**: Detailed service scan results.
+
+**Log File**: A timestamped log file is generated to track the script’s progress (e.g., asn_processing_20250111_123456.log).
+  
 ### Example
 ```bash
 ./0x-asn-toolkit.sh AS12345
 ```
 ### Output:
-
-- CIDR.txt
-- all_ip.txt
-- ASN_domain.txt
-- port-open-list.txt
-- Results archived to asn_results_AS12345_<timestamp>.tar.gz.
+An example output structure:
+- CIDR Ranges:
+```bash
+192.168.0.0/24
+10.0.0.0/8
+```
+- Expanded IPs:
+```bash
+192.168.0.1
+192.168.0.2
+...
+```
+- Resolved Domains:
+```bash
+example.com
+subdomain.example.com
+```
+- Live IPs:
+```bash
+192.168.0.5
+10.0.0.3
+```
+- Service Scan:
+```bash
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 7.6p1 Ubuntu
+80/tcp    open  http    Apache httpd 2.4.29
+```
 ### Dependencies
 Ensure the following are installed:
 - Linux/Unix Shell
@@ -117,4 +136,9 @@ sudo apt install -y golang
 - Contributions are welcome! Please feel free to open issues or submit pull requests for improvements.
 
 ### ⚠️ Reminder
-🛡️ Always use this script ethically and responsibly. Ensure you have proper authorization before scanning or querying any resources. This tool is designed to enhance security research, not violate policies or laws.
+- Always ensure you have proper authorization before scanning any network or ASN.
+- This tool is intended for ethical use in penetration testing and reconnaissance.
+
+🛡️ **Disclaimer**: Unauthorized use of this tool may result in legal consequences. Use responsibly.
+
+
