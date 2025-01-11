@@ -50,4 +50,12 @@ check_status "naabu"
 sudo mv ~/go/bin/naabu /usr/local/bin
 check_status "naabu moved to /usr/local/bin"
 
+# Install awk
+sudo apt install gawk
+check_status "gawk"
+
+# Install nmap
+sudo apt install nmap
+check_status "nmap"
+
 echo -e "\n$g[✔] All Tools Installed Successfully! $e\n"
