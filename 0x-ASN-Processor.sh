@@ -91,7 +91,6 @@ else
 fi
 
 
-
 # Required tools check
 REQUIRED_TOOLS=("whois" "asnmap" "mapcidr" "dnsx" "naabu" "nmap" "awk")
 for tool in "${REQUIRED_TOOLS[@]}"; do
