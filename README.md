@@ -1,4 +1,4 @@
-<h1 align="center">「🐦‍🔥」0x ASN Toolkit</h1>
+<h1 align="center">「🐦‍🔥」0x ASN Processor</h1>
 
 <p align="center"><img src="assets/Screenshot_2.png"></p>
 
@@ -37,8 +37,8 @@ Ensure all tools are installed and properly configured on your system.
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/0xPoyel/0x-asn-toolkit.git
-cd 0x-asn-toolkit
+git clone https://github.com/0xPoyel/0x-ASN-Processor.git
+cd 0x-ASN-Processor
 ```
 ### Step 2: Install Required Tools
 The script will check and install missing tools automatically. Below are the manual installation commands for each tool:
@@ -65,18 +65,18 @@ chmod +x check.sh
 ### Usage Instructions
 1. Make the script executable:
 ```bash
-  chmod +x 0x-asn-toolkit.sh
+  chmod +x 0x-ASN-Processor.sh
 ```
 
 2. Open Help file:
 ```bash
-  ./0x-asn-toolkit.sh -h
+  ./0x-ASN-Processor.sh -h
 ```
 <p align="center"><img src="assets/Screenshot_1.png"></p>
 
 3. Run the script:
 ```bash
-  ./0x-asn-toolkit.sh <ASN>
+  ./0x-ASN-Processor.sh <ASN>
 ```
 - Replace <ASN> with the target ASN, e.g., AS12345.
 
@@ -102,7 +102,7 @@ Watch our comprehensive walkthrough of the ASN Processing Tool on YouTube:
   
 ### Example
 ```bash
-./0x-asn-toolkit.sh AS12345
+./0x-ASN-Processor.sh AS12345
 ```
 ### Output:
 An example output structure:
