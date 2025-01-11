@@ -67,18 +67,24 @@ mkdir -p "$OUTPUT_DIR"
 # Define log file in the output directory
 LOGFILE="$OUTPUT_DIR/asn_processing.log"
 
-# Update or clone 0x-asn-toolkit
+# Auto-update 0x-asn-toolkit
 TOOLKIT_DIR="0x-asn-toolkit"
 
 if [ -d "$TOOLKIT_DIR" ]; then
-    echo -e "${YELLOW}[+] Updating 0x-asn-toolkit repository...${NC}" | tee -a "$LOGFILE"
-    cd "$TOOLKIT_DIR" || exit
-    git pull origin main || { echo -e "${RED}Failed to update 0x-asn-toolkit. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
-    cd ..
+    echo -e "${YELLOW}[+] Directory '$TOOLKIT_DIR' found. Attempting to update the repository...${NC}" | tee -a "$LOGFILE"
+    cd "$TOOLKIT_DIR" || { echo -e "${RED}Failed to navigate to '$TOOLKIT_DIR'. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
+    if git pull origin main; then
+        echo -e "${GREEN}[+] Successfully updated 0x-asn-toolkit repository.${NC}" | tee -a "$LOGFILE"
+    else
+        echo -e "${RED}[-] Failed to update 0x-asn-toolkit repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
+        exit 1
+    fi
+    cd .. || { echo -e "${RED}Failed to navigate back to the parent directory. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
 else
-    echo -e "${YELLOW}[+] Cloning 0x-asn-toolkit repository...${NC}" | tee -a "$LOGFILE"
-    git clone https://github.com/0xPoyel/0x-asn-toolkit.git || { echo -e "${RED}Failed to clone 0x-asn-toolkit. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
+    echo -e "${RED}[-] Directory '$TOOLKIT_DIR' not found. Update skipped. Please ensure the repository exists.${NC}" | tee -a "$LOGFILE"
+    exit 1
 fi
+
 
 # Required tools check
 REQUIRED_TOOLS=("whois" "asnmap" "mapcidr" "dnsx" "naabu" "nmap" "awk")
