@@ -8,22 +8,19 @@ YELLOW='\033[1;33m'
 CYAN='\033[1;36m'
 NC='\033[0m' # No Color
 
-# Function to display the logo
-display_logo() {
-    echo -e "${BLUE}======================================="
-    echo -e "${CYAN}      ██████╗ ██╗   ██╗███████╗       "
-    echo -e "${CYAN}      ██╔══██╗██║   ██║██╔════╝       "
-    echo -e "${CYAN}      ██████╔╝██║   ██║█████╗         "
-    echo -e "${CYAN}      ██╔═══╝ ██║   ██║██╔══╝         "
-    echo -e "${CYAN}      ██║     ╚██████╔╝███████╗       "
-    echo -e "${CYAN}      ╚═╝      ╚═════╝ ╚══════╝       "
-    echo -e "${BLUE}=======================================${NC}"
-    echo -e "${YELLOW}    0xPoyel ASN Processor     "
-    echo -e "${BLUE}=======================================${NC}"
-}
-
-# Call the function to display the logo
-display_logo
+# Print ASCII art logo
+echo -e "${RED}"
+cat << "EOF"
+ _____       ___   _____ _   _ ______                                       
+|  _  |     / _ \ /  ___| \ | || ___ \                                      
+| |/' |_  _/ /_\ \\ `--.|  \| || |_/ / __ ___   ___ ___  ___ ___  ___  _ __ 
+|  /| \ \/ /  _  | `--. \ . ` ||  __/ '__/ _ \ / __/ _ \/ __/ __|/ _ \| '__|
+\ |_/ />  <| | | |/\__/ / |\  || |  | | | (_) | (_|  __/\__ \__ \ (_) | |   
+ \___//_/\_\_| |_/\____/\_| \_/\_|  |_|  \___/ \___\___||___/___/\___/|_|   
+                                                                          
+────────────────────────────────────────────[By 0xPoyel]─────────
+EOF
+echo -e "${RESET}"
 
 # Help message function
 show_help() {
@@ -66,30 +63,6 @@ mkdir -p "$OUTPUT_DIR"
 
 # Define log file in the output directory
 LOGFILE="$OUTPUT_DIR/asn_processing.log"
-
-# Update or clone 0x-ASN-Processor
-TOOLKIT_DIR="0x-ASN-Processor"
-
-if [ -d "$TOOLKIT_DIR" ]; then
-    echo -e "${YELLOW}[+] Directory '$TOOLKIT_DIR' found. Attempting to update the repository...${NC}" | tee -a "$LOGFILE"
-    cd "$TOOLKIT_DIR" || { echo -e "${RED}Failed to navigate to '$TOOLKIT_DIR'. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
-    if git pull origin main; then
-        echo -e "${GREEN}[+] Successfully updated 0x-ASN-Processor repository.${NC}" | tee -a "$LOGFILE"
-    else
-        echo -e "${RED}[-] Failed to update 0x-ASN-Processor repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
-        exit 1
-    fi
-    cd .. || { echo -e "${RED}Failed to navigate back to the parent directory. Exiting.${NC}" | tee -a "$LOGFILE"; exit 1; }
-else
-    echo -e "${YELLOW}[+] Directory '$TOOLKIT_DIR' not found. Cloning the repository...${NC}" | tee -a "$LOGFILE"
-    if git clone https://github.com/0xPoyel/0x-ASN-Processor.git; then
-        echo -e "${GREEN}[+] Successfully cloned 0x-ASN-Processor repository.${NC}" | tee -a "$LOGFILE"
-    else
-        echo -e "${RED}[-] Failed to clone 0x-ASN-Processor repository. Please check your network or git settings.${NC}" | tee -a "$LOGFILE"
-        exit 1
-    fi
-fi
-
 
 # Required tools check
 REQUIRED_TOOLS=("whois" "asnmap" "mapcidr" "dnsx" "naabu" "nmap" "awk")
